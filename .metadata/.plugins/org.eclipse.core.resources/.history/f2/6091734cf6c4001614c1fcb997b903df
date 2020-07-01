@@ -1,0 +1,42 @@
+<%@page import="com.sun.xml.txw2.Document"%>
+<%@page import="monfox.toolkit.snmp.agent.modules.SnmpV2Mib.SysOREntry"%>
+<%@  page import="java.sql.*" %>
+<%@page import="pac.LoginBean"%>
+
+</head>
+<body>
+
+<%
+int id;
+String name;
+String password1;
+session=request.getSession(true);
+System.out.println("inside home");
+ %>
+ 
+    <jsp:useBean id="Bean" class="pac.LoginBean" scope="session"/> 
+    <jsp:getProperty name="Bean" property="custId" />
+	<jsp:getProperty name="Bean" property="username"/>
+	<jsp:getProperty name="Bean" property="password"/>
+<%
+id=Bean.getCustId();
+name=Bean.getPassword();
+password1=Bean.getUsername();
+%>
+ 
+
+
+
+
+
+<%--
+	1)view balance
+	2)add/active/deactivate/delete/transfer amount
+	3)DD request
+	4)check book request
+	5)benificiery details
+	6)change password request to admin
+	7)tranaction reports monthly ,quartly,
+	8)shedule tranaction  by date 
+ --%>
+

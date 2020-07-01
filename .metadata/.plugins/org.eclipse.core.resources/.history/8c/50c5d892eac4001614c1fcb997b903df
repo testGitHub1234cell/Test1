@@ -1,0 +1,98 @@
+<%@page import="com.sun.xml.txw2.Document"%>
+<%@page import="monfox.toolkit.snmp.agent.modules.SnmpV2Mib.SysOREntry"%>
+<%@  page import="java.sql.*" %>
+<%@page import="pac.LoginBean"%>
+
+</head>
+<body>
+<form name="user">
+<%
+int id;
+String name;
+String password1;
+session=request.getSession(true);
+
+ %>
+ 
+    <jsp:useBean id="Bean" class="pac.LoginBean" scope="session"/> 
+    <%-- <jsp:getProperty name="Bean" property="custId" />
+	<jsp:getProperty name="Bean" property="username"/>
+	<jsp:getProperty name="Bean" property="password"/> --%>
+<%
+id=Bean.getCustId();
+name=Bean.getPassword();
+password1=Bean.getUsername();
+%>
+ <script >
+ function getBalance()
+{
+	 
+ <%
+int balance=0;
+Class.forName("oracle.jdbc.driver.OracleDriver");
+System.out.println("connected>>>>>..............");
+System.out.println("inside user home");
+
+String url = "jdbc:oracle:thin:@localhost:1521:xe";
+String user = "system";
+String password = "oracle";
+Connection con;
+con=DriverManager.getConnection(url,user, password);
+	PreparedStatement ps=con.prepareStatement("select * from account_nb where cust_id=? ");
+	ps.setInt(1,id);
+	ResultSet rs=ps.executeQuery();
+	if(rs.next())
+	{
+		balance=rs.getInt("4");
+	
+	}
+%> 
+
+
+}
+</script> 
+
+<table align="CENTER" bgcolor="PINK" >
+<tr>
+<td> TO VIEW BALANCE CLICK </td>
+<td ><input type="button" value="Clickonme"  onclick="getBalance()"></td>
+</tr>
+
+<tr>
+<td>ADD BENIFICIARY CLICK</td>
+<td><input type="button" value="Click"></td>
+</tr>
+<tr>
+<td>DELETE BENIFICIARY CLICK</td>
+<td><input type="button" value="Click"></td>
+</tr>
+<tr>
+<td>TRANSFER AMOUNT CLICK</td>
+<td><input type="button" value="Click"></td>
+</tr>
+<tr>
+<td>PASSWORD CHANGE CLICK</td>
+<td><input type="button" value="Click"></td>
+</tr>
+</table>
+<table align="center">
+<TR><TD>VIEW BENIFICIARY DETAILS</TD><TD><input type="button"  value="VIEW"></TD></TR>
+</table>
+</body>
+</html>
+</form>
+
+
+
+
+<%--
+	1)view balance
+	2)add/active/deactivate/delete/transfer amount
+	3)DD request
+	4)check book request
+	5)benificiery details
+	6)change password request to admin
+	7)tranaction reports monthly ,quartly,
+	8)shedule tranaction  by date 
+ --%>
+

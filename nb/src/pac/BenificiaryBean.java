@@ -1,0 +1,44 @@
+package pac;
+
+public class BenificiaryBean 
+{
+    private int benId;
+    private String benName;
+    private long benAccountNo;
+    private long benContact;
+    private int benCustId;
+	
+    
+    public int getBenId() {
+		return benId;
+	}
+	public void setBenId(int benId) {
+		this.benId = benId;
+	}
+	public String getBenName() {
+		return benName;
+	}
+	public void setBenName(String benName) {
+		this.benName = benName;
+	}
+	public long getBenAccountNo() {
+		return benAccountNo;
+	}
+	public void setBenAccountNo(long benAccountNo) {
+		this.benAccountNo = benAccountNo;
+	}
+	public long getBenContact() {
+		return benContact;
+	}
+	public void setBenContact(long benContact) {
+		this.benContact = benContact;
+	}
+	public int getBenCustId() {
+		return benCustId;
+	}
+	public void setBenCustId(int benCustId) {
+		this.benCustId = benCustId;
+	}
+    
+
+}

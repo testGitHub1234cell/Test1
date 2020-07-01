@@ -1,0 +1,68 @@
+
+
+import java.io.Flushable;
+import java.io.IOException;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Controller extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+    
+    public Controller() {
+        super();
+        
+    }
+
+	
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{	
+	
+		
+		System.out.println("in the servlet<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>");
+		
+		String check =request.getParameter("type");
+		int ck=Integer.parseInt(check);
+		System.out.println(ck+"<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+		
+		switch(ck)
+		{
+		case 1:
+			request.getRequestDispatcher("ValidateUser.jsp").forward(request,response);
+		
+			break;
+		case 3:
+			System.out.println("IN CASE 3>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+			request.getRequestDispatcher("ValidateAdmin.jsp").forward(request,response);
+		
+			break;
+			
+		case 6:
+			System.out.println("IN CASE 6>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+			request.getRequestDispatcher("userDetails.jsp").forward(request,response);
+			
+			break;
+			
+		case 7:
+			System.out.println("IN CASE 7>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+			request.getRequestDispatcher("benificiaryDetails.jsp").forward(request,response);
+			break;
+			
+		case 8:
+			System.out.println("IN CASE 8>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+			request.getRequestDispatcher("request.jsp").forward(request,response);
+			
+			break;
+			
+		}
+		
+		}
+		
+		
+	}
+
+
+
